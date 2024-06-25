@@ -5,18 +5,29 @@ using UnityEngine.InputSystem;
 
 public class PlayerWeaponHandler : MonoBehaviour
 {
-    public PlayerController controller;
-    public Gun equippedGun;
-    private int gunIndex;
-    public List<Gun> gunList;
-    public int maxGuns = 2;
 
+    private GunModel curModel;
+
+    [Header("Guns Variables")]
+    [SerializeField] private GunData startGun;
+    public Gun equippedGun;
+    public int maxGuns = 2;
+    public List<Gun> gunList;
+
+    private int gunIndex;
+
+
+    [Header("Parents")]
     [SerializeField] private Transform gunContainer;
+    [SerializeField] private Transform gunModelContainer;
+    
+    [Header("Components")]
     [SerializeField] private Pickupable pickupPrefab;
+    public PlayerController controller;
 
     private void Start()
     {
-        Equip(equippedGun);
+        PickupGun(startGun);
     }
 
     public void PickupGun(GunData gun)
@@ -31,13 +42,22 @@ public class PlayerWeaponHandler : MonoBehaviour
             Destroy(equippedGun.gameObject);
         }
         Gun newGun = Instantiate(gun.gunPrefab, gunContainer);
+        GunModel model = Instantiate(gun.objectPrefab, gunModelContainer);
+        newGun.model = model;
         gunList.Add(newGun);
+        gunIndex = gunList.Count - 1;
         Equip(newGun);
     }
 
     public void Equip(Gun gun) {
-        equippedGun.gameObject.SetActive(false);
+        if(equippedGun != null && curModel != null)
+        {
+            equippedGun.gameObject.SetActive(false);
+            curModel.gameObject.SetActive(false);
+        }
         equippedGun = gun;
+        curModel = gun.model;
+        curModel.gameObject.SetActive(true);
         equippedGun.gameObject.SetActive(true);
         equippedGun.Initialize(controller);
         controller.h_hud.UpdateGunText();

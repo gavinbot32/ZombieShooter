@@ -11,7 +11,9 @@ GameObject:
   - component: {fileID: 4040998900084063432}
   - component: {fileID: 4654160364995642795}
   - component: {fileID: 8058264533469459112}
-  m_Layer: 9
+  - component: {fileID: 6676131004619627759}
+  - component: {fileID: 5407176044068804030}
+  m_Layer: 24
   m_Name: M4_8
   m_TagString: Gun
   m_Icon: {fileID: 0}
@@ -54,6 +56,7 @@ MonoBehaviour:
   muzzle: {fileID: 7828096836882994351}
   anim: {fileID: 8058264533469459112}
   muzzleFlash: {fileID: 114637989094783951}
+  model: {fileID: 0}
   gunData: {fileID: 11400000, guid: f52472a1a8b11e245a075b8b2b9e035d, type: 2}
   magazineCur: 36
   ammo: 200
@@ -79,6 +82,34 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6676131004619627759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2463884509011348114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55b153a70bf4b6b49872e75d55c67ecf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  playerCamera: {fileID: 0}
+  playerController: {fileID: 0}
+--- !u!114 &5407176044068804030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2463884509011348114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d825ab7cb6d4a3d43b611e2c40ef691e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particals: {fileID: 114637989094783951}
 --- !u!1 &4124149900415983605
 GameObject:
   m_ObjectHideFlags: 0
@@ -90,7 +121,7 @@ GameObject:
   - component: {fileID: 7973008540444278669}
   - component: {fileID: 3668280064045090455}
   - component: {fileID: 3054503989030436775}
-  m_Layer: 9
+  m_Layer: 24
   m_Name: Sight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -171,7 +202,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7663411562780814442}
-  m_Layer: 9
+  m_Layer: 24
   m_Name: GunPivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -205,7 +236,7 @@ GameObject:
   - component: {fileID: 1966667210047799027}
   - component: {fileID: 4919823494218566981}
   - component: {fileID: 1263213776809057241}
-  m_Layer: 9
+  m_Layer: 24
   m_Name: Mag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -288,7 +319,7 @@ GameObject:
   - component: {fileID: 1274675927926659990}
   - component: {fileID: 8076889244992229256}
   - component: {fileID: 3797128475310351057}
-  m_Layer: 9
+  m_Layer: 24
   m_Name: Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -371,7 +402,7 @@ GameObject:
   - component: {fileID: 5356805008793698720}
   - component: {fileID: 5833843606598576269}
   - component: {fileID: 1537746748605238286}
-  m_Layer: 9
+  m_Layer: 24
   m_Name: Bolt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -454,7 +485,7 @@ GameObject:
   - component: {fileID: 1218889303173695242}
   - component: {fileID: 79593166304010632}
   - component: {fileID: 7375718492132770421}
-  m_Layer: 9
+  m_Layer: 24
   m_Name: Rear_Sight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -537,7 +568,7 @@ GameObject:
   - component: {fileID: 7297225538191936452}
   - component: {fileID: 1450392628851992911}
   - component: {fileID: 1227507461448505990}
-  m_Layer: 9
+  m_Layer: 24
   m_Name: M4_8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -632,10 +663,20 @@ PrefabInstance:
       propertyPath: m_RenderMode
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5456141305677124280, guid: 1a591b49634eb4d4683dc800e6427afb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 24
+      objectReference: {fileID: 0}
     - target: {fileID: 6706653001737137648, guid: 1a591b49634eb4d4683dc800e6427afb,
         type: 3}
       propertyPath: m_Name
       value: Muzzle
+      objectReference: {fileID: 0}
+    - target: {fileID: 6706653001737137648, guid: 1a591b49634eb4d4683dc800e6427afb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 8092748039645611379, guid: 1a591b49634eb4d4683dc800e6427afb,
         type: 3}

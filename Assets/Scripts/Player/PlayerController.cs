@@ -12,6 +12,21 @@ public class PlayerController : MonoBehaviour
     public Health h_health;
     public PlayerWeaponHandler h_weapon;
     public InteractHandler h_interact;
+
+    [Header("Cameras")]
+    public Camera baseCamera;
+    public Camera uiCamera;
+    public Camera uioCamera;
+    public Camera weaponCamera;
+
+    public LayerMask uioMask;
+    public LayerMask weaponMask;
+    public LayerMask baseMask;
+
+    public int uioLayer;
+    public int weaponLayer;
+    public int modelWeaponLayer;
+
     private void Awake()
     {
         SetComponents();
@@ -33,7 +48,14 @@ public class PlayerController : MonoBehaviour
 
     private void SetOtherComponents()
     {
-        
+        SetCameraLayer(uioCamera, uioMask);
+        SetCameraLayer(weaponCamera, weaponMask);
     }
+
+    public void SetCameraLayer(Camera cam, LayerMask layer)
+    {
+        cam.cullingMask = layer;
+    }
+
 
 }

@@ -17,6 +17,8 @@ MonoBehaviour:
   modelPrefab: {fileID: 100004, guid: b812e42521a5a27499e76cc5ed56e3ac, type: 3}
   gunPrefab: {fileID: 131393261569437963, guid: 9c4cdeda44a15dc4ca7bc62f9560dab3,
     type: 3}
+  objectPrefab: {fileID: -7372728971451752904, guid: 7cc9cd3ff09812f4f8a062156139876b,
+    type: 3}
   type: 0
   gunName: 1911
   damage: 15

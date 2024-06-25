@@ -21,6 +21,16 @@ public static class MonoBehaviorExtensions
         return component;
     }
 
+    public static T SafeGetComponentInParent<T>(this MonoBehaviour mb, T component) where T : Component
+    {
+        if (component == null)
+        {
+            return mb.GetComponentInParent<T>();
+        }
+        return component;
+    }
+
+
     public static void ParticalSystemBurst(this MonoBehaviour mb, ParticleSystem ps)
     {
         ps.Stop();

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3821854009195275226}
   - component: {fileID: 2356282628417260185}
   - component: {fileID: 8885794985996100022}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: Gun_Pickup
   m_TagString: Interactable
   m_Icon: {fileID: 0}

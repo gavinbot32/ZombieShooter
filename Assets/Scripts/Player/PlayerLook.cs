@@ -12,6 +12,7 @@ public class PlayerLook : MonoBehaviour
     [SerializeField] Transform cam;
     [SerializeField] private Transform cameraPos;
     [SerializeField] private Transform orientation;
+    [SerializeField] private Transform playerModel;
     private Vector2 mouseInput;
     
 
@@ -31,6 +32,7 @@ public class PlayerLook : MonoBehaviour
         cam.position = cameraPos.position;
         cam.localRotation = Quaternion.Euler(xRotation, yRotation, 0);
         orientation.rotation = Quaternion.Euler(0,yRotation, 0);
+        playerModel.rotation = Quaternion.Euler(0, yRotation, 0);
     }
     private void MyInput()
     {

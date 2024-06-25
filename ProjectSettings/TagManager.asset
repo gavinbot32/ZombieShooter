@@ -17,9 +17,11 @@ TagManager:
   - Ground
   - Player
   - Enemy
-  - Weapon
   - Interact
-  - UIObject
+  - WeaponModels1
+  - WeaponModels2
+  - WeaponModels3
+  - WeaponModels4
   - 
   - 
   - 
@@ -30,16 +32,14 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Weapon1
+  - Weapon2
+  - Weapon3
+  - Weapon4
+  - UIObject1
+  - UIObject2
+  - UIObject3
+  - UIObject4
   m_SortingLayers:
   - name: Default
     uniqueID: 0

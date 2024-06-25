@@ -6,6 +6,7 @@ using UnityEngine;
 public class GunData : ItemData
 {
     public Gun gunPrefab;
+    public GunModel objectPrefab;
     [Header("Gun Properties")]
     public GunType type;
     public string gunName;
