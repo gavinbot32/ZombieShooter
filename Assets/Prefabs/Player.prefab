@@ -30,9 +30,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3840169236170753436}
-  - {fileID: 1116888317238749791}
-  - {fileID: 2856146800515734838}
-  - {fileID: 378939095867005309}
   - {fileID: 1948039785652747866}
   m_Father: {fileID: 1008751086165509430}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -67,7 +64,10 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1116888317238749791}
+  - {fileID: 2856146800515734838}
+  - {fileID: 378939095867005309}
   m_Father: {fileID: 6176054711957010599}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &4630666069058456890
@@ -109,7 +109,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 1495
+    m_Bits: 1527
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -148,7 +148,6 @@ MonoBehaviour:
   m_Cameras:
   - {fileID: 8223770907820789425}
   - {fileID: 5704425587578676652}
-  - {fileID: 6426542170855420620}
   m_RendererIndex: -1
   m_VolumeLayerMask:
     serializedVersion: 2
@@ -313,7 +312,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 1
-  m_Camera: {fileID: 6426542170855420620}
+  m_Camera: {fileID: 4630666069058456890}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -342,7 +341,7 @@ MonoBehaviour:
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1920, y: 1080}
-  m_ScreenMatchMode: 0
+  m_ScreenMatchMode: 2
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -668,7 +667,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6176054711957010599}
+  m_Father: {fileID: 3840169236170753436}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &8223770907820789425
 Camera:
@@ -903,7 +902,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6176054711957010599}
+  m_Father: {fileID: 3840169236170753436}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &5704425587578676652
 Camera:
@@ -1763,7 +1762,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6176054711957010599}
+  m_Father: {fileID: 3840169236170753436}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &6426542170855420620
 Camera:
@@ -1804,7 +1803,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 32
+    m_Bits: 0
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
