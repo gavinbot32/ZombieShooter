@@ -5,6 +5,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerWeaponHandler : MonoBehaviour
 {
+    public delegate void AimPosMethod();
+
 
     private GunModel curModel;
 
@@ -16,10 +18,15 @@ public class PlayerWeaponHandler : MonoBehaviour
 
     private int gunIndex;
 
+    private bool aiming;
+    private bool aimingHeld;
 
     [Header("Parents")]
     [SerializeField] private Transform gunContainer;
     [SerializeField] private Transform gunModelContainer;
+    [SerializeField] private Transform aimPosition;
+    private Vector3 targetPos;
+    private Vector3 startPos;
     
     [Header("Components")]
     [SerializeField] private Pickupable pickupPrefab;
@@ -27,20 +34,44 @@ public class PlayerWeaponHandler : MonoBehaviour
 
     private void Start()
     {
+        startPos = gunContainer.localPosition;
+        targetPos = aimPosition.localPosition;
         PickupGun(startGun);
+    }
+
+    private void Update()
+    {
+        if (equippedGun != null)
+        {
+            if (aiming)
+            {
+                targetPos = aimPosition.localPosition + equippedGun.gunData.aimOffset;
+            }
+            else
+            {
+                targetPos = startPos;
+            }
+        }
+
+        if(gunContainer.position != targetPos)
+        {
+            gunContainer.localPosition = Vector3.MoveTowards(gunContainer.localPosition, targetPos, 2 *Time.deltaTime);
+        }
     }
 
     public void PickupGun(GunData gun)
     {
         if (gunList.Count >= maxGuns)
         {
-            
+            //if max amount of guns
             gunList.Remove(equippedGun);
-            
+            //Spawn pickup object
             Pickupable pu = Instantiate(pickupPrefab, gunContainer.position, Quaternion.identity);
+            //initialize pickup object
             pu.Initialize(equippedGun.gunData);
             Destroy(equippedGun.gameObject);
         }
+        //Create the new gun instance and its model
         Gun newGun = Instantiate(gun.gunPrefab, gunContainer);
         GunModel model = Instantiate(gun.objectPrefab, gunModelContainer);
         newGun.model = model;
@@ -48,19 +79,65 @@ public class PlayerWeaponHandler : MonoBehaviour
         gunIndex = gunList.Count - 1;
         Equip(newGun);
     }
-
     public void Equip(Gun gun) {
         if(equippedGun != null && curModel != null)
         {
+            //Turns gun off
             equippedGun.gameObject.SetActive(false);
             curModel.gameObject.SetActive(false);
         }
+        //sets equipped gun
         equippedGun = gun;
         curModel = gun.model;
+        
+        //turns gun on
         curModel.gameObject.SetActive(true);
         equippedGun.gameObject.SetActive(true);
-        equippedGun.Initialize(controller);
+
+        equippedGun.Initialize(controller, this);
         controller.h_hud.UpdateGunText();
+    }
+    public void CycleWeapon(int modifier = 1)
+    {
+        //As long as gun is reloading you cant cycle weapons
+        if (equippedGun.reloading || equippedGun.cooldown > 0 || aiming) return;
+        if (gunList.Count > 1)
+        {
+            int index = gunIndex + modifier;
+            if (index >= gunList.Count)
+            {
+                index = 0;
+            }
+            else if (index < 0)
+            {
+                index = gunList.Count - 1;
+            }
+            gunIndex = index;
+            Equip(gunList[index]);
+        }
+    }
+
+    public void Aim(bool toggle)
+    {
+        //Ease weapon container into aiming position
+        //Add weapon aim offset to aiming position
+        if (equippedGun.reloading) return;
+        aiming = toggle;
+    }
+
+    public void OnAimInput(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            Aim(true);
+            aimingHeld = true;
+        }
+        if (context.canceled)
+        {
+            Aim(false);
+            aimingHeld = false;
+        }
+        
     }
     public void OnFireInput(InputAction.CallbackContext context)
     {
@@ -69,10 +146,12 @@ public class PlayerWeaponHandler : MonoBehaviour
         {
             if (context.performed)
             {
+                //mouse is holding
                 equippedGun.holding = true;
             }
             if (context.canceled)
             {
+                //mouse is no longer holding
                 equippedGun.holding = false;
             }
         } else if (equippedGun.gunData.type == GunType.SemiAutomatic)
@@ -83,13 +162,13 @@ public class PlayerWeaponHandler : MonoBehaviour
             }
         }
     }
-
     public void OnReloadInput(InputAction.CallbackContext context)
     {
         if (equippedGun == null) return;
         if (context.performed)
         {
-            equippedGun.Reload();
+            if (equippedGun.magazineCur == equippedGun.gunData.magazineSize) return;
+            StopAimForReload();
         }
     }
     public void OnCycleInputUp(InputAction.CallbackContext context)
@@ -100,23 +179,25 @@ public class PlayerWeaponHandler : MonoBehaviour
     {
         CycleWeapon(-1);
     }
-
-    public void CycleWeapon(int modifier = 1)
+    
+    public void StopAimForReload()
     {
-        if (equippedGun.reloading || equippedGun.cooldown > 0) return;
-        if(gunList.Count > 1)
+        if (!aiming)
         {
-            int index = gunIndex + modifier;
-            if(index >= gunList.Count)
-            {
-                index = 0;
-            } 
-            else if (index < 0)
-            {
-                index = gunList.Count - 1;
-            }
-            gunIndex = index;
-            Equip(gunList[index]);  
+            equippedGun.Reload();
+        }
+        else
+        {
+            aiming = false;
+            StartCoroutine(WaitUntilAimFinished(startPos, equippedGun.Reload));
         }
     }
+
+    public IEnumerator WaitUntilAimFinished(Vector3 endPos, AimPosMethod aimMethod)
+    {
+        yield return new WaitUntil(() => gunContainer.localPosition == endPos);
+        aimMethod();
+        
+    }
+
 }

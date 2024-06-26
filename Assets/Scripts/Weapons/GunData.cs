@@ -15,4 +15,7 @@ public class GunData : ItemData
     public float speed;
     public int startAmmo;
     public int magazineSize;
+
+    [Header("Other Settings")]
+    public Vector3 aimOffset;
 }

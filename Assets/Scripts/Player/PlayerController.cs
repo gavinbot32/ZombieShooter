@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public PlayerHUD h_hud; 
     public Health h_health;
     public PlayerWeaponHandler h_weapon;
+        
     public InteractHandler h_interact;
 
     [Header("Cameras")]
@@ -18,6 +19,8 @@ public class PlayerController : MonoBehaviour
     public Camera uiCamera;
     public Camera uioCamera;
     public Camera weaponCamera;
+
+    [Header("Layers")]
 
     public LayerMask uioMask;
     public LayerMask weaponMask;

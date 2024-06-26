@@ -31,6 +31,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3840169236170753436}
+  - {fileID: 349462883132206937}
   - {fileID: 1948039785652747866}
   m_Father: {fileID: 1008751086165509430}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1587,6 +1588,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 947f708e-ee96-4c12-b691-755b24909694
     m_ActionName: Player/Start[/Keyboard/escape,/XInputControllerWindows/start]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5067208143102974607}
+        m_TargetAssemblyTypeName: PlayerWeaponHandler, Assembly-CSharp
+        m_MethodName: OnAimInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: e1fc9968-f2ea-4589-806f-1ca994ac6988
+    m_ActionName: Player/Aim[/XInputControllerWindows/leftTrigger,/Mouse/rightButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -1621,8 +1638,12 @@ MonoBehaviour:
   weaponMask:
     serializedVersion: 2
     m_Bits: 0
+  baseMask:
+    serializedVersion: 2
+    m_Bits: 0
   uioLayer: 0
   weaponLayer: 0
+  modelWeaponLayer: 0
 --- !u!114 &6853133896034574489
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1716,6 +1737,7 @@ MonoBehaviour:
   gunList: []
   gunContainer: {fileID: 1948039785652747866}
   gunModelContainer: {fileID: 9022463084241014934}
+  aimPosition: {fileID: 349462883132206937}
   pickupPrefab: {fileID: 8885794985996100022, guid: 14c1dad29544fac43b8114f004c6f90a,
     type: 3}
   controller: {fileID: 4604319901801877207}
@@ -1829,12 +1851,43 @@ Transform:
   m_GameObject: {fileID: 7100961572237741269}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -1, z: -0, w: 0.0000029504295}
-  m_LocalPosition: {x: 0.15, y: -0.15, z: 0.3}
+  m_LocalPosition: {x: 0.15, y: -0.14999998, z: 0.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6176054711957010599}
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
+--- !u!1 &7706069193454557393
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 349462883132206937}
+  m_Layer: 7
+  m_Name: AimPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &349462883132206937
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7706069193454557393}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0.0000029504295}
+  m_LocalPosition: {x: 0, y: -0.09, z: 0.3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6176054711957010599}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7854244635563358702
 GameObject:
   m_ObjectHideFlags: 0

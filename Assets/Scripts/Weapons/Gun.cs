@@ -13,6 +13,7 @@ public enum GunType
 public class Gun : MonoBehaviour
 {
     private PlayerController owner;
+    private PlayerWeaponHandler weaponHandler;
     public bool holding;
     public bool reloading;
     [SerializeField] private Transform bulletHole;
@@ -27,9 +28,10 @@ public class Gun : MonoBehaviour
     public int ammo;
     public float cooldown;
 
-    public void Initialize(PlayerController owner)
+    public void Initialize(PlayerController owner, PlayerWeaponHandler h_weapons)
     {
         this.owner = owner;
+        weaponHandler = h_weapons;
         anim = this.SafeGetComponent(anim);
         if(magazineCur <= 0)
         {
@@ -81,7 +83,7 @@ public class Gun : MonoBehaviour
         }
         else
         {
-            Reload();
+            weaponHandler.StopAimForReload();
         }
     }
 
