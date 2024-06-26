@@ -117,7 +117,13 @@ public class Gun : MonoBehaviour
             Ray ray = new Ray(origin, forward);
             RaycastHit hit;
             if(Physics.Raycast(ray,out hit, rayDistance)){
+                //if hit
                 print(hit.collider.gameObject);
+                if (hit.collider.gameObject.CompareTag("Enemy"))
+                {
+                    hit.collider.gameObject.GetComponent<Health>().TakeDamage(gunData.damage);
+                }
+
                 //Spawn the decal object just above the surface the raycast hit
                 Transform decalObject = Instantiate(bulletHole, hit.point + (hit.normal * 0.025f), Quaternion.identity);
                 //Rotate the decal object so that it's "up" direction is the surface the raycast hit

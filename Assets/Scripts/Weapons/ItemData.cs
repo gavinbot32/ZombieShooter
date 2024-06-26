@@ -4,7 +4,8 @@ using UnityEngine;
 
 public enum ItemType
 {
-    Gun
+    Gun,
+    Ammo
 }
 
 [CreateAssetMenu(fileName = "ItemData", menuName = "Scriptable Objects/ItemData")]
@@ -12,6 +13,7 @@ public class ItemData : ScriptableObject
 {
     public string itemName;
     public ItemType itemType;
+    public PickupType pickupType = PickupType.Interact;
     public GameObject modelPrefab;
     
 }

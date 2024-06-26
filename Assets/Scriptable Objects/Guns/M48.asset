@@ -23,7 +23,7 @@ MonoBehaviour:
   gunName: M4_8
   damage: 15
   range: 100
-  speed: 0.1
+  speed: 0.2
   startAmmo: 250
   magazineSize: 36
   aimOffset: {x: 0, y: -0.02, z: 0}

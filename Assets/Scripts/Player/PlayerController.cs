@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Components")]
     public Transform t_camera;
+    public MeshRenderer model;
     public PlayerMovement h_movement;
     public PlayerLook h_look;
     public PlayerHUD h_hud; 

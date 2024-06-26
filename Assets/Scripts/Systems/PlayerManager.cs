@@ -17,6 +17,7 @@ public class PlayerManager : MonoBehaviour
     public int[] uioLayers;
     public int[] weaponModelLayers;
 
+    public Material[] playerMaterials;
    
 
     public void OnPlayerJoined(PlayerInput player)
@@ -34,6 +35,9 @@ public class PlayerManager : MonoBehaviour
         pc.SetCameraLayer(pc.uioCamera, pc.uioMask);
         pc.SetCameraLayer(pc.weaponCamera, pc.weaponMask);
         pc.SetCameraLayer(pc.baseCamera, pc.baseMask);
+
+        pc.model.material = playerMaterials[m_playerInput.playerCount - 1];
+
         onPlayerJoined.Invoke();
     }
     public void OnPlayerLeft(PlayerInput player)

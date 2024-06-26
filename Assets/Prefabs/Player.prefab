@@ -1321,7 +1321,7 @@ GameObject:
   - component: {fileID: 1974988288154012491}
   m_Layer: 7
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1622,6 +1622,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   t_camera: {fileID: 6176054711957010599}
+  model: {fileID: 6347579471649755869}
   h_movement: {fileID: 2199028038027771496}
   h_look: {fileID: 513069853249249922}
   h_hud: {fileID: 1296700152860333570}
