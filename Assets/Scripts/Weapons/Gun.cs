@@ -16,7 +16,7 @@ public class Gun : MonoBehaviour
     private PlayerWeaponHandler weaponHandler;
     public bool holding;
     public bool reloading;
-    [SerializeField] private Transform bulletHole;
+    [SerializeField] private Decal bulletHole;
     [SerializeField] private Transform muzzle;
     [SerializeField] private Animator anim;
     [SerializeField] private ParticleSystem muzzleFlash;
@@ -123,11 +123,15 @@ public class Gun : MonoBehaviour
                 {
                     hit.collider.gameObject.GetComponent<Health>().TakeDamage(gunData.damage);
                 }
+                if(hit.collider.gameObject.CompareTag("Player") || hit.collider.gameObject.CompareTag("Enemy"))
+                {
+                    break;
+                }
 
                 //Spawn the decal object just above the surface the raycast hit
-                Transform decalObject = Instantiate(bulletHole, hit.point + (hit.normal * 0.025f), Quaternion.identity);
+                Decal decalObject = Instantiate(bulletHole, hit.point + (hit.normal * 0.025f), Quaternion.identity);
                 //Rotate the decal object so that it's "up" direction is the surface the raycast hit
-                decalObject.rotation = Quaternion.FromToRotation(Vector3.forward, hit.normal); ;
+                decalObject.transform.rotation = Quaternion.FromToRotation(Vector3.forward, hit.normal); 
                 Destroy(decalObject.gameObject, 2f);
                 break;
             }

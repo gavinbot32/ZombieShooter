@@ -579,7 +579,6 @@ GameObject:
   - component: {fileID: 5686695395837818551}
   - component: {fileID: 3099174498624193222}
   - component: {fileID: 6347579471649755869}
-  - component: {fileID: 4562767378143032863}
   m_Layer: 7
   m_Name: Model
   m_TagString: Untagged
@@ -653,29 +652,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &4562767378143032863
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4461405657262035541}
-  m_Material: {fileID: 13400000, guid: fc7d79163170b6a4e89211269c920e05, type: 2}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4891638032840008724
 GameObject:
   m_ObjectHideFlags: 0
@@ -1063,6 +1039,7 @@ GameObject:
   - component: {fileID: 5067208143102974607}
   - component: {fileID: 1974988288154012491}
   - component: {fileID: 7524437711994554679}
+  - component: {fileID: 7346153840187101435}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -1424,7 +1401,7 @@ MonoBehaviour:
   groundDrag: 6
   airDrag: 2
   jumpForce: 4
-  groundDistance: 0.1
+  groundDistance: 0.2
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 64
@@ -1524,6 +1501,29 @@ CapsuleCollider:
     m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!136 &7346153840187101435
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6610183961544786285}
+  m_Material: {fileID: 13400000, guid: fc7d79163170b6a4e89211269c920e05, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2

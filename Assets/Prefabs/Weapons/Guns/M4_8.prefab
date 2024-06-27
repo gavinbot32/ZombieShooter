@@ -51,7 +51,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   holding: 0
   reloading: 0
-  bulletHole: {fileID: 7944893890885270748, guid: 3d4cc413e683f3742a60159fd81552d3,
+  bulletHole: {fileID: -6635020396877769224, guid: 3d4cc413e683f3742a60159fd81552d3,
     type: 3}
   muzzle: {fileID: 7828096836882994351}
   anim: {fileID: 8058264533469459112}

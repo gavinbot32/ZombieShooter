@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: 1911
   itemType: 0
+  pickupType: 0
   modelPrefab: {fileID: 100004, guid: b812e42521a5a27499e76cc5ed56e3ac, type: 3}
   gunPrefab: {fileID: 131393261569437963, guid: 9c4cdeda44a15dc4ca7bc62f9560dab3,
     type: 3}
@@ -24,5 +25,6 @@ MonoBehaviour:
   damage: 15
   range: 20
   speed: 0.5
-  startAmmo: 250
+  maxAmmo: 120
   magazineSize: 12
+  aimOffset: {x: 0, y: 0, z: 0}

@@ -72,7 +72,8 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Jump()
     {
-        rig.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+        print("Jump");
+        rig.AddForce(transform.up * (jumpForce * rig.mass), ForceMode.Impulse);
     }
 
     private void ControlDrag()

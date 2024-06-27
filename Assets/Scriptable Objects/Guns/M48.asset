@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: M4_8
   itemType: 0
+  pickupType: 0
   modelPrefab: {fileID: 100002, guid: c7741850eebe1df4ea75a80275b16311, type: 3}
   gunPrefab: {fileID: 4654160364995642795, guid: 568cf1d45cb22f74d8cdaf635e0ba7f7,
     type: 3}
@@ -24,6 +25,6 @@ MonoBehaviour:
   damage: 15
   range: 100
   speed: 0.2
-  startAmmo: 250
+  maxAmmo: 255
   magazineSize: 36
   aimOffset: {x: 0, y: -0.02, z: 0}

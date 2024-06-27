@@ -17,6 +17,8 @@ public class Pickupable : MonoBehaviour
 
     [SerializeField] private BoxCollider[] colliders;
     [SerializeField] private LayerMask layerMask;
+    private bool canDestroy = true;
+    [SerializeField] private float lifeTime = 2;
     public void Initialize(ItemData item)
     {
         interact.interactLabel = item.itemName;
@@ -34,11 +36,18 @@ public class Pickupable : MonoBehaviour
             col.size = mesh.bounds.size;
             col.center = mesh.transform.localPosition;
         }
+        lifeTime *= 60f;
 
     }
 
     private void FixedUpdate()
     {
+        lifeTime -= Time.deltaTime;
+        if(lifeTime <= 0)
+        {
+            Destroy(gameObject);
+        }
+
         if(pickupType == PickupType.Collision)
         {
             Ray ray = new Ray(transform.position, Vector3.up);
@@ -66,7 +75,8 @@ public class Pickupable : MonoBehaviour
     }
     public void OnPickupAmmo(PlayerController player)
     {
-        player.h_weapon.equippedGun.ammo += (ushort)Random.Range(50, 251);
+        canDestroy = !player.h_weapon.MaxAmmoCheck(player.h_weapon.equippedGun);
+        player.h_weapon.AddAmmo(Random.Range(10, 75 ));
     }
 
     public void Pickup(PlayerController player)
@@ -80,7 +90,11 @@ public class Pickupable : MonoBehaviour
                 OnPickupAmmo(player);
                 break;
         }
-        Destroy(gameObject);
+        if (canDestroy)
+        {
+            Destroy(gameObject);
+        }
+        canDestroy = true;
     }
     public void Pickup()
     {
@@ -94,7 +108,11 @@ public class Pickupable : MonoBehaviour
                 OnPickupAmmo(player);
                 break;
         }
-        Destroy(gameObject);
+        if (canDestroy)
+        {
+            Destroy(gameObject);
+        }
+        canDestroy = true;
     }
     public void OnCollisionEnter(Collision collision)
     {

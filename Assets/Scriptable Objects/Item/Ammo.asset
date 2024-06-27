@@ -15,4 +15,5 @@ MonoBehaviour:
   itemName: Ammo
   itemType: 1
   pickupType: 1
-  modelPrefab: {fileID: 100000, guid: 8cbbb35c5fcc276458e3e8865abf1341, type: 3}
+  modelPrefab: {fileID: 223698360546143177, guid: b9319fd50ff00a34fae2a33b154c7da2,
+    type: 3}

@@ -58,12 +58,24 @@ public class PlayerWeaponHandler : MonoBehaviour
         }
     }
 
-    public void AddAmmo(ushort amount)
+    public bool MaxAmmoCheck(Gun gun)
+    {
+        if (gun.ammo >= gun.gunData.maxAmmo) return true;
+        return false;
+    }
+
+    public void AddAmmo(int amount)
     {
         //Add ammo to equipped gun
         //If equipped gun has max ammo, top off each gun until ammo off
+      
 
-
+        equippedGun.ammo += (ushort)amount;
+        if(equippedGun.ammo >= equippedGun.gunData.maxAmmo)
+        {
+            equippedGun.ammo = equippedGun.gunData.maxAmmo;
+            controller.h_hud.UpdateGunText();
+        }
     }
 
     public void PickupGun(GunData gun)

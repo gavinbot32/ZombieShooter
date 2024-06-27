@@ -18,7 +18,13 @@ public class PlayerManager : MonoBehaviour
     public byte[] weaponModelLayers;
 
     public Material[] playerMaterials;
-   
+
+    public List<PlayerController> players;
+
+    private void Start()
+    {
+        players = new List<PlayerController>();
+    }
 
     public void OnPlayerJoined(PlayerInput player)
     {
@@ -38,10 +44,14 @@ public class PlayerManager : MonoBehaviour
 
         pc.model.material = playerMaterials[m_playerInput.playerCount - 1];
 
+        players.Add(pc);
+
         onPlayerJoined.Invoke();
     }
     public void OnPlayerLeft(PlayerInput player)
     {
+        PlayerController pc = player.GetComponent<PlayerController>();
+        players.Remove(pc);
         onPlayerLeft.Invoke();
     }
 
