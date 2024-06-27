@@ -14,7 +14,9 @@ public class Pickupable : MonoBehaviour
     private PickupType pickupType;
     [SerializeField] private Interactable interact;
     [SerializeField] private ItemData item;
+
     [SerializeField] private BoxCollider[] colliders;
+    [SerializeField] private LayerMask layerMask;
     public void Initialize(ItemData item)
     {
         interact.interactLabel = item.itemName;
@@ -35,6 +37,27 @@ public class Pickupable : MonoBehaviour
 
     }
 
+    private void FixedUpdate()
+    {
+        if(pickupType == PickupType.Collision)
+        {
+            Ray ray = new Ray(transform.position, Vector3.up);
+            RaycastHit hit;
+
+            Debug.DrawRay(ray.origin, ray.direction, Color.red,0.5f);
+
+            if(Physics.Raycast(ray,out hit, 1f, layerMask))
+            {
+                if (hit.collider.gameObject.CompareTag("Player"))
+                {
+                    PlayerController player = hit.collider.gameObject.GetComponent<PlayerController>();
+                    Pickup(player);
+                }
+            }
+        }
+    }
+
+
     public void OnPickupGun(PlayerController player)
     {
         if (pickupType != PickupType.Interact) return;
@@ -43,7 +66,7 @@ public class Pickupable : MonoBehaviour
     }
     public void OnPickupAmmo(PlayerController player)
     {
-        player.h_weapon.equippedGun.ammo += Random.Range(50, 251);
+        player.h_weapon.equippedGun.ammo += (ushort)Random.Range(50, 251);
     }
 
     public void Pickup(PlayerController player)
@@ -73,20 +96,15 @@ public class Pickupable : MonoBehaviour
         }
         Destroy(gameObject);
     }
-    public void OnTriggerEnter(Collider other)
-    {
-        
-    }
-
     public void OnCollisionEnter(Collision collision)
     {
         if (pickupType != PickupType.Collision) return;
         if (collision.collider.gameObject.CompareTag("Player"))
         {
-            print("Player");
             PlayerController player = collision.collider.gameObject.GetComponent<PlayerController>();
             Pickup(player);
         }
+
     }
 
 }

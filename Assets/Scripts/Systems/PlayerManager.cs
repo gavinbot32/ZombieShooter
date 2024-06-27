@@ -13,9 +13,9 @@ public class PlayerManager : MonoBehaviour
     public LayerMask[] baseMasks;
     public LayerMask[] weaponMasks;
     public LayerMask[] uioMasks;
-    public int[] weaponLayers;
-    public int[] uioLayers;
-    public int[] weaponModelLayers;
+    public byte[] weaponLayers;
+    public byte[] uioLayers;
+    public byte[] weaponModelLayers;
 
     public Material[] playerMaterials;
    

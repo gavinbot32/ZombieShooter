@@ -1172,9 +1172,9 @@ MonoBehaviour:
     m_Bits: 1073741824
   - serializedVersion: 2
     m_Bits: 2147483648
-  weaponLayers: 18000000190000001a0000001b000000
-  uioLayers: 1c0000001d0000001e0000001f000000
-  weaponModelLayers: 0a0000000b0000000c0000000d000000
+  weaponLayers: 18191a1b
+  uioLayers: 1c1d1e1f
+  weaponModelLayers: 0a0b0c0d
   playerMaterials:
   - {fileID: 2100000, guid: 939de8ff9d01a844ba01cbcb6a024c13, type: 2}
   - {fileID: 2100000, guid: 71a4673557a5e93479ba8086b7c5ae5f, type: 2}
@@ -1296,6 +1296,7 @@ GameObject:
   - component: {fileID: 1853759008}
   - component: {fileID: 1853759007}
   - component: {fileID: 1853759009}
+  - component: {fileID: 1853759011}
   - component: {fileID: 1853759006}
   - component: {fileID: 1853759010}
   m_Layer: 0
@@ -1320,9 +1321,9 @@ MonoBehaviour:
   deathEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1853759010}
-        m_TargetAssemblyTypeName: LootTableHandler, Assembly-CSharp
-        m_MethodName: SpawnLoot
+      - m_Target: {fileID: 1853759011}
+        m_TargetAssemblyTypeName: Enemy, Assembly-CSharp
+        m_MethodName: OnDeath
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1415,6 +1416,21 @@ MonoBehaviour:
   pickupPrefab: {fileID: 8885794985996100022, guid: 14c1dad29544fac43b8114f004c6f90a,
     type: 3}
   lootTable: {fileID: 11400000, guid: e1b7fbe99bdd50343aa65bba451adc71, type: 2}
+--- !u!114 &1853759011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1853759005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41ee7e585dfe7c846afb61dc4bb40e13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chanceForLoot: 25
+  h_Health: {fileID: 1853759006}
+  h_lootTable: {fileID: 1853759010}
 --- !u!1 &1858436544
 GameObject:
   m_ObjectHideFlags: 0
@@ -2150,7 +2166,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interact: {fileID: 4148992870754226213}
   item: {fileID: 11400000, guid: 5ce46587b4970d24ba5d0f3917376364, type: 2}
-  colliders: []
+  colliders:
+  - {fileID: 6914968777971591216}
+  - {fileID: 3326350626744767824}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1 &7381883751055863385
 GameObject:
   m_ObjectHideFlags: 0
@@ -2224,7 +2245,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interact: {fileID: 2356282628869685673}
   item: {fileID: 11400000, guid: f52472a1a8b11e245a075b8b2b9e035d, type: 2}
-  colliders: []
+  colliders:
+  - {fileID: 5103135756842793404}
+  - {fileID: 3967266500864738524}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!23 &8954724660970517858
 MeshRenderer:
   m_ObjectHideFlags: 0

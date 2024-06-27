@@ -10,11 +10,11 @@ public class GunData : ItemData
     [Header("Gun Properties")]
     public GunType type;
     public string gunName;
-    public int damage;
-    public float range;
+    public byte damage;
+    public byte range;
     public float speed;
-    public int startAmmo;
-    public int magazineSize;
+    public ushort maxAmmo;
+    public byte magazineSize;
 
     [Header("Other Settings")]
     public Vector3 aimOffset;

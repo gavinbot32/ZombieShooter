@@ -122,6 +122,9 @@ MonoBehaviour:
   colliders:
   - {fileID: 5103135757027701388}
   - {fileID: 3967266500780625900}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!114 &2356282628417260185
 MonoBehaviour:
   m_ObjectHideFlags: 0

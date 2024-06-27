@@ -27,9 +27,9 @@ public class PlayerController : MonoBehaviour
     public LayerMask weaponMask;
     public LayerMask baseMask;
 
-    public int uioLayer;
-    public int weaponLayer;
-    public int modelWeaponLayer;
+    public byte uioLayer;
+    public byte weaponLayer;
+    public byte modelWeaponLayer;
 
     private void Awake()
     {

@@ -13,13 +13,12 @@ public class PlayerWeaponHandler : MonoBehaviour
     [Header("Guns Variables")]
     [SerializeField] private GunData startGun;
     public Gun equippedGun;
-    public int maxGuns = 2;
+    public byte maxGuns = 2;
     public List<Gun> gunList;
 
-    private int gunIndex;
+    private sbyte gunIndex;
 
     private bool aiming;
-    private bool aimingHeld;
 
     [Header("Parents")]
     [SerializeField] private Transform gunContainer;
@@ -59,6 +58,14 @@ public class PlayerWeaponHandler : MonoBehaviour
         }
     }
 
+    public void AddAmmo(ushort amount)
+    {
+        //Add ammo to equipped gun
+        //If equipped gun has max ammo, top off each gun until ammo off
+
+
+    }
+
     public void PickupGun(GunData gun)
     {
         if (gunList.Count >= maxGuns)
@@ -76,7 +83,7 @@ public class PlayerWeaponHandler : MonoBehaviour
         GunModel model = Instantiate(gun.objectPrefab, gunModelContainer);
         newGun.model = model;
         gunList.Add(newGun);
-        gunIndex = gunList.Count - 1;
+        gunIndex = (sbyte)(gunList.Count - 1);
         Equip(newGun);
     }
     public void Equip(Gun gun) {
@@ -97,26 +104,25 @@ public class PlayerWeaponHandler : MonoBehaviour
         equippedGun.Initialize(controller, this);
         controller.h_hud.UpdateGunText();
     }
-    public void CycleWeapon(int modifier = 1)
+    public void CycleWeapon(sbyte modifier = 1)
     {
         //As long as gun is reloading you cant cycle weapons
         if (equippedGun.reloading || equippedGun.cooldown > 0 || aiming) return;
         if (gunList.Count > 1)
         {
-            int index = gunIndex + modifier;
+            sbyte index = (sbyte)(gunIndex + modifier);
             if (index >= gunList.Count)
             {
                 index = 0;
             }
             else if (index < 0)
             {
-                index = gunList.Count - 1;
+                index = (sbyte)(gunList.Count - 1);
             }
             gunIndex = index;
             Equip(gunList[index]);
         }
     }
-
     public void Aim(bool toggle)
     {
         //Ease weapon container into aiming position
@@ -124,18 +130,15 @@ public class PlayerWeaponHandler : MonoBehaviour
         if (equippedGun.reloading) return;
         aiming = toggle;
     }
-
     public void OnAimInput(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
             Aim(true);
-            aimingHeld = true;
         }
         if (context.canceled)
         {
             Aim(false);
-            aimingHeld = false;
         }
         
     }

@@ -1,23 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Billboard : MonoBehaviour
 {
     [Header("Leave blank for main")]
-    public Camera camera;
+    [FormerlySerializedAs("camera")] public Camera cam;
 
     private void Start()
     {
-        if(camera == null)
+        if(cam == null)
         {
-            camera = Camera.main;
+            cam = Camera.main;
         }
     }
 
     private void LateUpdate()
     {
-        transform.rotation = camera.transform.rotation;
+        transform.rotation = cam.transform.rotation;
     }
 
 }

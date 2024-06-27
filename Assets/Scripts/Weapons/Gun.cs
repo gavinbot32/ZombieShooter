@@ -24,8 +24,8 @@ public class Gun : MonoBehaviour
     [Header("Gun Properties")]
     public GunModel model;
     public GunData gunData;
-    public int magazineCur;
-    public int ammo;
+    public byte magazineCur;
+    public ushort ammo;
     public float cooldown;
 
     public void Initialize(PlayerController owner, PlayerWeaponHandler h_weapons)
@@ -44,7 +44,7 @@ public class Gun : MonoBehaviour
 
         }
 
-        ammo = gunData.startAmmo;
+        ammo = gunData.maxAmmo;
         magazineCur = gunData.magazineSize;
     }
 
